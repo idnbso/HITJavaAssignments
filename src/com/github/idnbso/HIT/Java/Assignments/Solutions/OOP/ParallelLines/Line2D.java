@@ -19,7 +19,7 @@ class Line2D
 
     boolean isParallel(Line2D otherLine)
     {
-        return (this.getSlope() == otherLine.getSlope()) && !this.equals(otherLine);
+        return (!this.equals(otherLine) && this.getSlope() == otherLine.getSlope());
     }
 
     double length()
