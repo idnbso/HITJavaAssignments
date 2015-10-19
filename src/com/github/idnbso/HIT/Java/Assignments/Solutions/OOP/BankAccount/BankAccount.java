@@ -7,7 +7,7 @@ public class BankAccount
 
     public BankAccount()
     {
-        id = 000_000_000L;
+        id = 0L;
         balance = 0.0d;
     }
 
