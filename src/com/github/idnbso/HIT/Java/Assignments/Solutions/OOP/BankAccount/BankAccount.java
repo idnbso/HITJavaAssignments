@@ -7,8 +7,8 @@ public class BankAccount
 
     public BankAccount()
     {
-        id = 0L;
-        balance = 0.0d;
+        setId(0L);
+        setBalance(0.0d);
     }
 
     public BankAccount(long id, double balance)
