@@ -3,7 +3,7 @@ package com.github.idnbso.hit.java.assignments.solutions.oop;
 import com.github.idnbso.hit.java.assignments.solutions.oop.bankaccount.*;
 import com.github.idnbso.hit.java.assignments.solutions.oop.parallellines.*;
 
-public class TestOOPSolutions
+public class OOPSolutionsTest
 {
 
     public static void main(String[] args)
@@ -19,7 +19,7 @@ public class TestOOPSolutions
         switch (iExerciseName)
         {
             case "BankAccount":
-                testBankAccount();
+                BankAccountTest.main(null);
                 break;
             case "ParallelLines":
                 LinesTest.main(null);
@@ -32,20 +32,6 @@ public class TestOOPSolutions
         System.out.println("### Finished Test of Exercise: " + iExerciseName + " ###");
     }
 
-    private static void testBankAccount()
-    {
-        BankAccount myBankAccount = new BankAccount(123_456_789, 0);
-        System.out.println("# BankAccount myBankAccount was created.");
-        System.out.println("myBankAccount Id number is: " + myBankAccount.getId());
-        System.out.println("myBankAccount current balance is: " + myBankAccount.getBalance() + "$");
 
-        System.out.println("# Depositing 100.5$ to myBankAccount.");
-        myBankAccount.deposit(100.5);
-        System.out.println("myBankAccount current balance is: " + myBankAccount.getBalance() + "$");
-
-        System.out.println("# Withdrawing 10.2$ from myBankAccount.");
-        myBankAccount.withdraw(10.2);
-        System.out.println("myBankAccount current balance is: " + myBankAccount.getBalance() + "$");
-    }
 
 }

@@ -31,18 +31,18 @@ public class BankAccount
         this.id = id;
     }
 
-    public void setBalance(double balance)
-    {
-        this.balance = balance;
-    }
-
     public void withdraw(double amount)
     {
-        balance -= amount;
+        setBalance(balance - amount);
     }
 
     public void deposit(double amount)
     {
-        balance += amount;
+        setBalance(balance + amount);
+    }
+    
+    private void setBalance(double balance)
+    {
+        this.balance = balance;
     }
 }
