@@ -1,7 +1,7 @@
-package com.github.idnbso.HIT.Java.Assignments.Solutions.OOP;
+package com.github.idnbso.hit.java.assignments.solutions.oop;
 
-import com.github.idnbso.HIT.Java.Assignments.Solutions.OOP.BankAccount.BankAccount;
-import com.github.idnbso.HIT.Java.Assignments.Solutions.OOP.ParallelLines.LinesTest;
+import com.github.idnbso.hit.java.assignments.solutions.oop.bankaccount.*;
+import com.github.idnbso.hit.java.assignments.solutions.oop.parallellines.*;
 
 public class TestOOPSolutions
 {

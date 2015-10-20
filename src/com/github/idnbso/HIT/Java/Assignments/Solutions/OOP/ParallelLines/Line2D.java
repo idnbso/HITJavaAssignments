@@ -1,4 +1,4 @@
-package com.github.idnbso.HIT.Java.Assignments.Solutions.OOP.ParallelLines;
+package com.github.idnbso.hit.java.assignments.solutions.oop.parallellines;
 
 class Line2D
 {

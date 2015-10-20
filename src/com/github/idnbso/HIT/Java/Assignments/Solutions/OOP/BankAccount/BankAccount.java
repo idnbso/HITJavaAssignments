@@ -1,4 +1,4 @@
-package com.github.idnbso.HIT.Java.Assignments.Solutions.OOP.BankAccount;
+package com.github.idnbso.hit.java.assignments.solutions.oop.bankaccount;
 
 public class BankAccount
 {
@@ -7,8 +7,7 @@ public class BankAccount
 
     public BankAccount()
     {
-        setId(0L);
-        setBalance(0.0d);
+        this(0L, 0.0d);
     }
 
     public BankAccount(long id, double balance)
