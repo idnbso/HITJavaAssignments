@@ -28,21 +28,6 @@ class Line2D
         return (Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
 
-    double getSlope()
-    {
-        return (getDeltaY() / getDeltaX());
-    }
-
-    double getDeltaX()
-    {
-        return (second.getX() - first.getX());
-    }
-
-    double getDeltaY()
-    {
-        return (second.getY() - first.getY());
-    }
-
     @Override
     public int hashCode()
     {
@@ -94,4 +79,18 @@ class Line2D
         return true;
     }
 
+    protected double getSlope()
+    {
+        return (getDeltaY() / getDeltaX());
+    }
+
+    protected double getDeltaX()
+    {
+        return (second.getX() - first.getX());
+    }
+
+    protected double getDeltaY()
+    {
+        return (second.getY() - first.getY());
+    }
 }

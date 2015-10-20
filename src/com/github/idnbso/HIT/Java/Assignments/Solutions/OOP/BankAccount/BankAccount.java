@@ -26,11 +26,6 @@ public class BankAccount
         return balance;
     }
 
-    public void setId(long id)
-    {
-        this.id = id;
-    }
-
     public void withdraw(double amount)
     {
         setBalance(balance - amount);
@@ -41,7 +36,12 @@ public class BankAccount
         setBalance(balance + amount);
     }
 
-    private void setBalance(double balance)
+    protected void setId(long id)
+    {
+        this.id = id;
+    }
+
+    protected void setBalance(double balance)
     {
         this.balance = balance;
     }
