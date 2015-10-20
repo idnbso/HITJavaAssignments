@@ -5,11 +5,6 @@ public class BankAccountTest
 
     public static void main(String[] args)
     {
-        testBankAccount();
-    }
-    
-    private static void testBankAccount()
-    {
         BankAccount myBankAccount = new BankAccount(123_456_789, 0);
         System.out.println("# BankAccount myBankAccount was created.");
         System.out.println("myBankAccount Id number is: " + myBankAccount.getId());

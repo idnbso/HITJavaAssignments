@@ -40,7 +40,7 @@ public class BankAccount
     {
         setBalance(balance + amount);
     }
-    
+
     private void setBalance(double balance)
     {
         this.balance = balance;

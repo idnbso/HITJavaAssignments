@@ -16,6 +16,7 @@ public class OOPSolutionsTest
     {
         System.out.println("### Starting Test of Exercise: " + iExerciseName + " ###");
         System.out.print(System.lineSeparator());
+        
         switch (iExerciseName)
         {
             case "BankAccount":
@@ -25,13 +26,11 @@ public class OOPSolutionsTest
                 LinesTest.main(null);
                 break;
             default:
-                System.out.println("# ERROR: There is no Exercise with such name.");
+                System.out.println("# ERROR: There is no exercise with such name.");
                 break;
         }
         System.out.print(System.lineSeparator());
         System.out.println("### Finished Test of Exercise: " + iExerciseName + " ###");
     }
-
-
 
 }
