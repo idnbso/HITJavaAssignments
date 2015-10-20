@@ -24,7 +24,8 @@ class Line2D
 
     double length()
     {
-        double deltaX = getDeltaX(), deltaY = getDeltaY();
+        double deltaX = getDeltaX();
+        double deltaY = getDeltaY();
         return (Math.sqrt(deltaX * deltaX + deltaY * deltaY));
     }
 
