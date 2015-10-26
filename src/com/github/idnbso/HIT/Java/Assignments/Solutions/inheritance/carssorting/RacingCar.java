@@ -8,7 +8,6 @@ public class RacingCar extends SportCar
             String sponsorName)
     {
         super(horsePower, modelName, isManualCar);
-        setManualCar(isManualCar);
         setSponsorName(sponsorName);
     }
 
