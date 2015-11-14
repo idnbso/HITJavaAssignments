@@ -16,7 +16,7 @@ public class SimpleCSVFileProcess
             fr = new FileReader(args[0]);
             in = new BufferedReader(fr);
             String str = in.readLine();
-            str = in.readLine(); // skip the first line of titles
+            str = in.readLine(); // skips the first line of titles
             while (str != null)
             {
                 int indexOfFirstComma = str.indexOf(",");
