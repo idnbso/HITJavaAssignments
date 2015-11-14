@@ -20,4 +20,28 @@ public class IOUtils
             }
         }
     }
+
+    public static void streamReverseOrderCopy(InputStream in, OutputStream out) throws IOException
+    {
+        synchronized (out)
+        {
+            synchronized (in)
+            {
+                int size = (int) in.available();
+                byte vec[] = new byte[size];
+                int index = 0;
+                int numOfBytes = in.read();
+                while (numOfBytes != -1)
+                {
+                    vec[index++] = (byte) numOfBytes;
+                    numOfBytes = in.read();
+                }
+
+                for (int i = vec.length - 1; i >= 0; --i)
+                {
+                    out.write(vec[i]);
+                }
+            }
+        }
+    }
 }
