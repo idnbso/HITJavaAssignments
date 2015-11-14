@@ -22,7 +22,7 @@ public class SimpleCSVFileProcess
                 int indexOfFirstComma = str.indexOf(",");
                 int indexOfSecondComma = str.indexOf(",", indexOfFirstComma + 1);
 
-                String feePerDownloadString = str.subSequence(indexOfFirstComma+1, indexOfSecondComma)
+                String feePerDownloadString = str.subSequence(indexOfFirstComma + 1, indexOfSecondComma)
                         .toString();
                 double feePerDownload = Double.parseDouble(feePerDownloadString);
 
