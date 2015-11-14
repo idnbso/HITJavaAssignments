@@ -63,7 +63,7 @@ public class LoggingBankAccount
     public void setNewLogFile(File logFile)
     {
         this.logFile = logFile;
-        String message = String.format("\t%s\t\t\t|\t%s\t|\t\t%s%s", "Date & Hour", "Amount", "Balance",
+        String message = String.format("\t\t%s\t\t\t|\t%s\t|\t\t%s%s", "Date & Hour", "Amount", "Balance",
                 System.lineSeparator());
 
         final String flag = "overwrite";
@@ -95,7 +95,7 @@ public class LoggingBankAccount
 
     protected void writeToLogFile(LogMessageType type, double amount)
     {
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd @ HH:mm:ss")
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd @ HH:mm:ss:SS")
                 .format(Calendar.getInstance().getTime());
 
         String signOfSum = (type == LogMessageType.WITHDRAW ? "-" : "+");
