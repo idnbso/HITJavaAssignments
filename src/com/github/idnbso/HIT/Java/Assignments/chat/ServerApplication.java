@@ -3,23 +3,15 @@ package com.github.idnbso.hit.java.assignments.chat;
 import java.io.*;
 import java.net.*;
 
-public class ServerApplication
+public class ServerApplication implements Closeable
 {
+    private static ServerSocket server;
+
     public static void main(String args[])
     {
 
-        ServerSocket server = null;
         MessageBoard mb = new MessageBoard();
-
-        try
-        {
-            server = new ServerSocket(1300, 5);
-        }
-        catch (IOException e)
-        {
-
-        }
-
+        createServer();
         Socket socket = null;
         ClientDescriptor client = null;
         ConnectionProxy connection = null;
@@ -34,12 +26,44 @@ public class ServerApplication
                 connection.addConsumer(client);
                 client.addConsumer(mb);
                 mb.addConsumer(connection);
-                connection.start();
+                connection.startConnection();
+                System.out.println("A new connection was made.");
+                
             }
             catch (IOException e)
             {
-
+                e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public void close()
+    {
+        if (server != null)
+        {
+            try
+            {
+                server.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void createServer()
+    {
+        try
+        {
+            server = new ServerSocket(1300, 5);
+            System.out.println("The server socket was created.");
+            System.out.println("Waiting for new connections...");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 }
