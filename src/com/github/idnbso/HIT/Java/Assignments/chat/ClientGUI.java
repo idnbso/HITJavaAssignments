@@ -1,7 +1,6 @@
 package com.github.idnbso.hit.java.assignments.chat;
 
 import javax.swing.*;
-import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -89,7 +88,6 @@ public class ClientGUI implements StringConsumer, StringProducer
     {
         try
         {
-            // TODO: check that the server address is a proper ip address
             connection = new ConnectionProxy();
             connection.addConsumer(this);
             this.addConsumer(connection);
@@ -99,7 +97,8 @@ public class ClientGUI implements StringConsumer, StringProducer
         }
         catch (ConnectException e)
         {
-            JOptionPane.showMessageDialog(null, "Connection refused by the server which could be offline.");
+            JOptionPane.showMessageDialog(null,
+                    "Connection refused by the server which could be offline.");
         }
         catch (NumberFormatException | IOException e)
         {
@@ -143,12 +142,19 @@ public class ClientGUI implements StringConsumer, StringProducer
                             JOptionPane.showMessageDialog(null, "Invalid server address input.");
                         }
 
-                        int port = Integer.parseInt(textFieldPort.getText());
-                        if (1024 < port && port < 65536)
+                        try
                         {
-                            isServerPortValid = true;
+                            int port = Integer.parseInt(textFieldPort.getText());
+                            if (1024 < port && port < 65536)
+                            {
+                                isServerPortValid = true;
+                            }
+                            else
+                            {
+                                throw new NumberFormatException();
+                            }
                         }
-                        else
+                        catch (NumberFormatException e)
                         {
                             JOptionPane.showMessageDialog(null,
                                     "Invalid server port number input.");
