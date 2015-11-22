@@ -5,8 +5,11 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClientGUI implements StringConsumer, StringProducer
 {
@@ -50,7 +53,6 @@ public class ClientGUI implements StringConsumer, StringProducer
         colorLightRed = new Color(220, 0, 70);
         colorLigtGreen = new Color(0, 220, 100);
 
-        // TODO: make the rows and columns constants
         textAreaMessageBoard = new JTextArea("Welcome to the chat room.\n",
                 numberOfMessageBoardRows, numberOfMessageBoardColumns);
         textAreaMessageBoard.setEditable(false);
@@ -95,6 +97,10 @@ public class ClientGUI implements StringConsumer, StringProducer
                     Integer.parseInt(textFieldPort.getText()));
             isConnected = true;
         }
+        catch (ConnectException e)
+        {
+            JOptionPane.showMessageDialog(null, "Connection refused by the server which could be offline.");
+        }
         catch (NumberFormatException | IOException e)
         {
             e.printStackTrace();
@@ -124,9 +130,40 @@ public class ClientGUI implements StringConsumer, StringProducer
                     inputString = textFieldNickname.getText();
                     if (!isConnected)
                     {
-                        buttonConnectDisconnect.setText("Disconnect");
-                        buttonConnectDisconnect.setBackground(colorLigtGreen);
-                        setupNewConnectionProxy();
+                        boolean isServerAddressValid = false;
+                        boolean isServerPortValid = false;
+
+                        String serverAddress = textFieldServerAddress.getText();
+                        if (IPAddressValidator.validate(serverAddress))
+                        {
+                            isServerAddressValid = true;
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Invalid server address input.");
+                        }
+
+                        int port = Integer.parseInt(textFieldPort.getText());
+                        if (1024 < port && port < 65536)
+                        {
+                            isServerPortValid = true;
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null,
+                                    "Invalid server port number input.");
+                        }
+
+                        if (isServerAddressValid && isServerPortValid)
+                        {
+                            buttonConnectDisconnect.setText("Disconnect");
+                            buttonConnectDisconnect.setBackground(colorLigtGreen);
+                            setupNewConnectionProxy();
+                        }
+                        else
+                        {
+                            inputString = null;
+                        }
                     }
                     else
                     {
@@ -212,7 +249,7 @@ public class ClientGUI implements StringConsumer, StringProducer
         panelBottom.add(buttonSend);
         frame.add(panelBottom, BorderLayout.SOUTH);
         frame.setSize(600, 400);
-        
+
         // place the window in the center of the screen
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -252,5 +289,35 @@ public class ClientGUI implements StringConsumer, StringProducer
     public void removeConsumer(StringConsumer sc)
     {
         consumers.remove(sc);
+    }
+
+    public static class IPAddressValidator
+    {
+
+        private static Pattern pattern;
+        private static Matcher matcher;
+
+        private static final String IPADDRESS_PATTERN = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+                + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
+                + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+
+        public IPAddressValidator()
+        {
+
+        }
+
+        /**
+         * Validate ip address with regular expression
+         * 
+         * @param ip
+         *            address for validation
+         * @return true valid ip address, false invalid ip address
+         */
+        public static boolean validate(final String ip)
+        {
+            pattern = Pattern.compile(IPADDRESS_PATTERN);
+            matcher = pattern.matcher(ip);
+            return matcher.matches();
+        }
     }
 }
