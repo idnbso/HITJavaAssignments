@@ -11,6 +11,11 @@ public class RacingCar extends SportCar
         setSponsorName(sponsorName);
     }
 
+    public RacingCar()
+    {
+        this(0, "modelName", false, "sponserName");
+    }
+
     public String getSponsorName()
     {
         return sponsorName;

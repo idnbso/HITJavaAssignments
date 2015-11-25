@@ -307,11 +307,6 @@ public class ClientGUI implements StringConsumer, StringProducer
                 + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."
                 + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
 
-        public IPAddressValidator()
-        {
-
-        }
-
         /**
          * Validate ip address with regular expression
          * 
